@@ -1,0 +1,11 @@
+div.onglet {
+    display: none;
+}
+
+div.show {
+    display: block;
+}
+
+nav li {
+    cursor: pointer;
+}
