@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>{{ title }}</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="app">
+        <!-- la synthaxe {{ variable }} permet d'afficher le contenu de la variable -->
+        <h1>Formulaire pour les participants</h1>
+
+        <!-- On déclare un événement via @nomEvent -->
+        <form-equipes @add-Team="addTeam"></form-equipes>
+
+        <team-card v-for="team in allTeams"
+                    :id="team.id"
+                    :name="team.name"
+                    :description="team.description">
+
+        </team-card>
+
+
+    </div>
+
+    <script src="../misc/constant.js"></script>
+
+    <!-- Afin de pouvoir importer Vue via la commande import, il est nécessaire de déclarer notre JS comme un module -->
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+
+        import FormEquipes from '../view/form-equipes.js';
+        import TeamCard from '../view/team-card.js'
+      
+        const app = createApp({
+            //La méthode created() est appelée à la création de l'application
+            created() {
+                document.title = TITLE; //Initialisation de la base <title> à la création de l'application
+            },
+            data() {
+                return {
+                    title: TITLE,
+                    allTeams: []
+                }
+            },
+            methods:{
+                addTeam: function(Team){
+                    // console.log('index.addTeam', Team);
+
+                    this.allTeams.push(Team); //this.variable permet d'accéder aux variables contenues dans data()
+                }
+            }
+        });
+
+        //la méthode component(nomComposantHtml, nomComposantImporte) permet de déclarer un composant utilisable en tant que balise HTML <nom-composant></nom-composant>
+        //Le nom du composant côté JS doit respecté le Pascal case, alors que son utilisation dans le code HTML respecte le kebab case
+        app.component('FormEquipes', FormEquipes)
+           .component('TeamCard', TeamCard);
+
+        app.mount('#app');
+      </script>
+</body>
+
+</html>
