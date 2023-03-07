@@ -12,15 +12,9 @@ export default {
             </a>
             
             <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav" v-for="link in links">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" :href="links[0]">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" :href="links[1]">Teams</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" :href="links[2]">Results</a>
+                        <a class="nav-link active" aria-current="page" :href="link.url">{{ link.name }}</a>
                     </li>
                 </ul>
             </div>
