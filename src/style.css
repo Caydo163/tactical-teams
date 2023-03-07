@@ -1,0 +1,7 @@
+div.onglet_cache {
+    display: none;
+}
+
+div.onglet_affiche {
+    display: block;
+}
