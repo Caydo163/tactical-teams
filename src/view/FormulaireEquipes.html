@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>{{ TITLE }}</title>
+    <title>{{ title }}</title>
     <meta charset="UTF-8">
 </head>
 
@@ -14,6 +14,15 @@
 
         <!-- On déclare un événement via @nomEvent -->
         <form-equipes @add-Team="addTeam"></form-equipes>
+
+        <team-card v-for="team in allTeams"
+                    :id="team.id"
+                    :name="team.name"
+                    :description="team.description">
+
+        </team-card>
+
+
     </div>
 
     <script src="../misc/constant.js"></script>
@@ -22,7 +31,8 @@
     <script type="module">
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 
-        import FormEquipes from '../view/FormEquipes.js';
+        import FormEquipes from '../view/form-equipes.js';
+        import TeamCard from '../view/team-card.js'
       
         const app = createApp({
             //La méthode created() est appelée à la création de l'application
@@ -32,14 +42,14 @@
             data() {
                 return {
                     title: TITLE,
-                    allTeam: []
+                    allTeams: []
                 }
             },
             methods:{
                 addTeam: function(Team){
-                    console.log('index.addTeam', Team);
+                    // console.log('index.addTeam', Team);
 
-                    this.allTeam.push(Team); //this.variable permet d'accéder aux variables contenues dans data()
+                    this.allTeams.push(Team); //this.variable permet d'accéder aux variables contenues dans data()
                 }
             }
         });
@@ -47,6 +57,7 @@
         //la méthode component(nomComposantHtml, nomComposantImporte) permet de déclarer un composant utilisable en tant que balise HTML <nom-composant></nom-composant>
         //Le nom du composant côté JS doit respecté le Pascal case, alors que son utilisation dans le code HTML respecte le kebab case
         app.component('FormEquipes', FormEquipes)
+           .component('TeamCard', TeamCard);
 
         app.mount('#app');
       </script>

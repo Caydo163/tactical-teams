@@ -3,6 +3,7 @@ export default {
         return {
             id: '',
             name: '',
+            description: '',
             errorMessage: '',
             errorColor: ERROR_COLOR
         }
@@ -10,24 +11,28 @@ export default {
     methods: {
         addTeam: function() {
             this.errorMessage = [];
-            if(!this.id || !this.name){
+            if(!this.id || !this.name || !this.description){
                 if (!this.id) {
                     this.errorMessage.push('Team Id is required');
                 }
                 if(!this.name){
                    this.errorMessage.push('Team name is required');
                 }
+                if(!this.description){
+                    this.errorMessage.push('Team description is required');
+                 }
                 return;
             }
 
-            const Team = { id: this.id, name: this.name };
+            const Team = { id: this.id, name: this.name, description: this.description };
             console.log('form.addTeam', Team);
 
             //permet de faire remonter un event au composant parent
             //l'event sera écouté à l'appel du composant enfant via @change-state="function"
             this.$emit('addTeam', Team);
 
-            this.title = '';
+            this.id = '';
+            this.name ='';
             this.description = '';
         }
     },
@@ -55,6 +60,11 @@ export default {
                     <div>
                         <label>Nom</label><br/>
                         <input v-model="name"/>
+                    </div>
+
+                    <div>
+                        <label>Description</label><br/>
+                        <textarea v-model="description"/>
                     </div>
 
                     <input type="submit" value="Envoyer" @click="addTeam"/>
