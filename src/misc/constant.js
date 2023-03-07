@@ -1,6 +1,7 @@
 const SITE_TITLE = 'Tactical Teams';
 
 const TITLE = 'Formulaire pour les participants';
+const ERROR_COLOR = 'red';
 
 
 const EQUIPES_JSON = `

@@ -10,7 +10,25 @@
     <div id="app">
         <nav-bar :links="linksNavBar"></nav-bar>
 
-        <team-card :id="id" :name="name" :description="description"></team-card> 
+        <div class="home">
+
+        </div>
+
+        <div class="teams">
+            <team-form @add-Team="addTeam"></team-form>
+
+            <team-card v-for="team in allTeams"
+                :id="team.id"
+                :name="team.name"
+                :description="team.description">
+            </team-card> 
+        </div>
+
+        <div class="result">
+
+        </div>
+
+
 
     </div>
     <script src="./src/misc/constant.js"></script>
@@ -20,22 +38,30 @@
 
         import NavBar from './src/view/nav-bar.js';
         import TeamCard from './src/view/team-card.js';
+        import TeamForm from './src/view/team-form.js';
+
 
         const app = createApp({
             data() {
                 return {
                     linksNavBar : LinkService.getNavLinks(),
-                    id : '465464564',
-                    name : 'Vitality',
-                    description : 'opfjkpzoekfpozkpfkzepofkzpoefkozoekfpzefkozpekfkopfjkpzoekfpozkpfkzepofkzpoefkozoekfpzefkozpekfkzopfjkpzoekfpozkpfkzepofkzpoefkozoekfpzefkozpekfkzz',
+                    title: TITLE,
+                    allTeams: []
                 }
             },
             created() {
                 document.title = SITE_TITLE;
+            },
+
+            methods:{
+                addTeam: function(Team){
+                    this.allTeams.push(Team);
+                }
             }
         })
 
         app.component('NavBar', NavBar)
+           .component('TeamForm', TeamForm)
            .component('TeamCard', TeamCard);
         
         app.mount('#app')
