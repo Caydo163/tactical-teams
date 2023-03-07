@@ -36,6 +36,7 @@ export default {
             this.description = '';
         }
     },
+    
     /*
      * v-bind:style => permet de lier une propriété HTML (en l'occurence style) à des variables VueJS (modèle), on peut aussi écrire :style
      * @submit.prevent => permet de bloquer le rechargement de la page à la validation du formulaire
