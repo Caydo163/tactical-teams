@@ -6,7 +6,7 @@ export default {
     template: `
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" :href="link[0]">
+            <a class="navbar-brand" :href="links[0]">
                 <img src="#" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 Tactical Teams
             </a>
