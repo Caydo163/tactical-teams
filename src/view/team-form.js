@@ -54,21 +54,31 @@ export default {
                     </div>
               
                     <div>
-                        <label>Id</label><br/>
-                        <input type="text" v-model="id"/>
+                        <label for="validationCustom01" class="form-label">Id</label><br/>
+                        <input type="text" class="form-control" id="validationCustom01" v-model="id" required/>
+                        <div class="invalid-feedback">
+                            Veuillez fournir un id
+                        </div>
                     </div>
 
                     <div>
-                        <label>Nom</label><br/>
-                        <input v-model="name"/>
+                        <label for="validationCustom02" class="form-label">Nom</label><br/>
+                        <input type="text" class="form-control" id="validationCustom02" v-model="name" required/>
+                        <div class="invalid-feedback">
+                            Veuillez fournir un nom
+                        </div>
+
                     </div>
 
                     <div>
-                        <label>Description</label><br/>
-                        <textarea v-model="description"/>
+                        <label for="validationCustom03" class="form-label">Description</label><br/>
+                        <textarea class="form-control" id="validationCustom03" v-model="description" required/>
+                        <div class="invalid-feedback">
+                            Veuillez fournir une descripion
+                        </div>
                     </div>
 
-                    <input type="submit" value="Envoyer" @click="addTeam"/>
+                    <button class="btn btn-primary" type="submit" @click="addTeam">Envoyer</button>
                 </form>
             </section>`
 }
