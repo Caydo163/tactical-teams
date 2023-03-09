@@ -1,0 +1,12 @@
+:root{
+    --error-color : #dc3545;
+}
+
+.error-form{
+    border: 1px solid var(--error-color);
+    border-radius: 7px;
+}
+
+.text-error{
+    color: var(--error-color);
+}
