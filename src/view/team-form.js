@@ -18,8 +18,8 @@ export default {
                 if(!this.name){
                    this.errorMessage.push('Team name is required');
                 }
-                if(!this.description){
-                    this.errorMessage.push('Team description is required');
+                if(this.description.length <20){
+                    this.errorMessage.push('Team description must be at least 20 characters');
                  }
                 return;
             }
