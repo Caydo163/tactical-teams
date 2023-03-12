@@ -12,7 +12,8 @@
         <nav-bar :links="linksNavBar"></nav-bar>
 
         <div id="home" class="onglet show">
-            Home
+            Home            
+            <news-card v-for="news in allNews" :title="news.title"  :date="news.publishedAt" :link="news.link"></news-card>
         </div>
 
         <div id="teams" class="onglet">
@@ -34,12 +35,15 @@
 
     </div>
     <script src="./src/misc/constant.js"></script>
-    <script src="./src/link-service.js"></script>
+    <script src="./src/service/link-service.js"></script>
+    <script src="./src/service/news-service.js"></script>
+    <script src="./src/service/api-service.js"></script>
     <script type="module">
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 
         import NavBar from './src/view/nav-bar.js';
         import TeamCard from './src/view/team-card.js';
+        import NewsCard from './src/view/news-card.js';
         import TeamForm from './src/view/team-form.js';
 
 
@@ -48,7 +52,11 @@
                 return {
                     linksNavBar : LinkService.getNavLinks(),
                     title: TITLE,
-                    allTeams: []
+                    allTeams: [],
+                    allNews: [
+                        {'title':'Titre', 'publishedAt':'2019-11-09T04:56:12Z', "link":"https://www.presse-citron.net/jo-esport-la-liste-decevante-des-jeux-video-selectionnes/"},
+                        {'title':'Titre2', 'publishedAt':'2023-03-02T19:00:22Z', "link":"https://www.presse-citron.net/jo-esport-la-liste-decevante-des-jeux-video-selectionnes/"}
+                    ]
                 }
             },
             created() {
@@ -64,6 +72,7 @@
 
         app.component('NavBar', NavBar)
            .component('TeamForm', TeamForm)
+           .component('NewsCard', NewsCard)
            .component('TeamCard', TeamCard);
         
         app.mount('#app')
