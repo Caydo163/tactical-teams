@@ -79,35 +79,36 @@ export default {
     template: `<section>
                 <h2>Team form</h2>
 
-                <form @submit.prevent class="was-validated">
+                <form @submit.prevent class="row g-3">
                     
               
-                    <div id="verif-id">
-                        <label for="validationCustom01" class="form-label">Id</label><br/>
-                        <input id="border_id" type="text" v-model="id"/>
+                    <div id="verif-id" class="col-md-2">
+                        <label for="inputId4" class="form-label">Id</label><br/>
+                        <input id="border_id" type="text" v-model="id" class="form-control"/>
                         <div id="error_id" style="display:none; color:#dc3545;">
                             Team Id is required
                         </div>
                     </div>
 
-                    <div id="verif-nom">
-                        <label for="validationCustom02" class="form-label">Nom</label><br/>
-                        <input id="border_name" type="text" v-model="name"/>
+                    <div id="verif-nom" class="col-md-3">
+                        <label for="inputName4" class="form-label">Nom</label><br/>
+                        <input id="border_name" type="text" v-model="name" class="form-control"/>
                         <div id="error_name" style="display:none; color:#dc3545;">
                             Team name is required
                         </div>
 
                     </div>
 
-                    <div id="verif-desc">
-                        <label for="validationCustom03" class="form-label">Description</label><br/>
-                        <textarea id="border_desc" v-model="description"/>
+                    <div id="verif-desc" class="col-md-8">
+                        <label for="inputDesc4" class="form-label">Description</label><br/>
+                        <textarea id="border_desc" v-model="description" class="form-control"/>
                         <div id="error_desc" style="display:none; color:#dc3545;">
                             Team description must be at least 20 characters
                         </div>
                     </div>
-
-                    <button class="btn btn-primary" type="submit" @click="addTeam">Envoyer</button>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit" @click="addTeam">Envoyer</button>
+                    </div>
                 </form>
                 </section>`
 }
