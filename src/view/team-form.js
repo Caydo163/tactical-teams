@@ -4,7 +4,6 @@ export default {
             id: '',
             name: '',
             description: '',
-            // errorMessage: '',
             erreurId:'',
             erreurNom:'',
             erreurDesc:'',
@@ -112,10 +111,3 @@ export default {
                 </form>
                 </section>`
 }
-
-// Affichage message erreur basique
-// <div v-if="errorMessage.length > 0" v-bind:style="{ color: errorColor}">
-                    //     <ul>
-                    //         <li v-for="(message, index) in errorMessage" :key="index">{{ message }}</li>
-                    //     </ul>
-                    // </div>
