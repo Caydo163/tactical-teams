@@ -1,9 +1,12 @@
 export default {
+    props:{
+        team: Object
+    },
     data: function() {
         return {
-            id: '',
-            name: '',
-            description: '',
+            id: this.team?.id,
+            name: this.team?.name,
+            description: this.team?.description,
             erreurId:'',
             erreurNom:'',
             erreurDesc:'',
@@ -47,7 +50,6 @@ export default {
                
                 return;
             }
-            this.formSubmitted = true
             const Team = { id: this.id, name: this.name, description: this.description };
             console.log('form.addTeam', Team);
 
@@ -65,6 +67,9 @@ export default {
             borderName.classList.remove("error-form");
             borderDesc.classList.remove("error-form");
             
+        },
+        editCard: function() {
+            console.log("truc");
         }
         
     },
@@ -78,7 +83,7 @@ export default {
     template: `<section>
                 <h2>Team form</h2>
 
-                <form @submit.prevent class="row g-3">
+                <form id="Formulaire-Equipes" @submit.prevent class="row g-3">
                     
               
                     <div id="verif-id" class="col-md-2">

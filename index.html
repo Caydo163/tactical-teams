@@ -21,7 +21,8 @@
             Teams
             <team-form @add-Team="addTeam"></team-form>
 
-            <team-card v-for="team in allTeams"
+            <team-card @edit-Card="editCard"
+            v-for="team in allTeams"
                 :id="team.id"
                 :name="team.name"
                 :description="team.description">
@@ -60,6 +61,9 @@
             methods:{
                 addTeam: function(Team){
                     this.allTeams.push(Team);
+                },
+                editCard: function(){
+                   console.log("coucou");
                 }
             }
         })
