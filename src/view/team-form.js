@@ -4,26 +4,50 @@ export default {
             id: '',
             name: '',
             description: '',
-            errorMessage: '',
-            errorColor: ERROR_COLOR
+            erreurId:'',
+            erreurNom:'',
+            erreurDesc:'',
+            errorColor: ERROR_COLOR_FORM
         }
     },
     methods: {
         addTeam: function() {
-            this.errorMessage = [];
-            if(!this.id || !this.name || !this.description){
+            const errorId = document.getElementById("error_id");
+            const errorName = document.getElementById("error_name");
+            const errorDesc = document.getElementById("error_desc");
+            const borderId = document.getElementById("border_id");
+            const borderName = document.getElementById("border_name");
+            const borderDesc = document.getElementById("border_desc");
+
+            if(!this.id || !this.name || this.description.length<20){
                 if (!this.id) {
-                    this.errorMessage.push('Team Id is required');
+                    errorId.style.display = "flex";
+                    borderId.classList.add("error-form");
                 }
-                if(!this.name){
-                   this.errorMessage.push('Team name is required');
+                else{
+                    errorId.style.display = "none";
+                    borderId.classList.remove("error-form");
                 }
-                if(!this.description){
-                    this.errorMessage.push('Team description is required');
-                 }
+                if (!this.name) {
+                    errorName.style.display = "flex";
+                    borderName.classList.add("error-form");
+                }
+                else{
+                    errorName.style.display = "none";
+                    borderName.classList.remove("error-form");
+                }
+                if (this.description.length<20) {
+                    errorDesc.style.display = "flex";
+                    borderDesc.classList.add("error-form");
+                }
+                else{
+                    errorDesc.style.display = "none";
+                    borderDesc.classList.remove("error-form");
+                }
+               
                 return;
             }
-
+            this.formSubmitted = true
             const Team = { id: this.id, name: this.name, description: this.description };
             console.log('form.addTeam', Team);
 
@@ -34,7 +58,15 @@ export default {
             this.id = '';
             this.name ='';
             this.description = '';
+            errorId.style.display = "none";
+            errorName.style.display = "none";
+            errorDesc.style.display = "none";
+            borderId.classList.remove("error-form");
+            borderName.classList.remove("error-form");
+            borderDesc.classList.remove("error-form");
+            
         }
+        
     },
     
     /*
@@ -46,29 +78,36 @@ export default {
     template: `<section>
                 <h2>Team form</h2>
 
-                <form @submit.prevent>
-                    <div v-if="errorMessage.length > 0" v-bind:style="{ color: errorColor}">
-                        <ul>
-                            <li v-for="(message, index) in errorMessage" :key="index">{{ message }}</li>
-                        </ul>
-                    </div>
+                <form @submit.prevent class="row g-3">
+                    
               
-                    <div>
-                        <label>Id</label><br/>
-                        <input type="text" v-model="id"/>
+                    <div id="verif-id" class="col-md-2">
+                        <label for="inputId4" class="form-label">Id</label><br/>
+                        <input id="border_id" type="text" v-model="id" class="form-control"/>
+                        <div id="error_id" style="display:none; color:#dc3545;">
+                            Team Id is required
+                        </div>
                     </div>
 
-                    <div>
-                        <label>Nom</label><br/>
-                        <input v-model="name"/>
+                    <div id="verif-nom" class="col-md-3">
+                        <label for="inputName4" class="form-label">Nom</label><br/>
+                        <input id="border_name" type="text" v-model="name" class="form-control"/>
+                        <div id="error_name" style="display:none; color:#dc3545;">
+                            Team name is required
+                        </div>
+
                     </div>
 
-                    <div>
-                        <label>Description</label><br/>
-                        <textarea v-model="description"/>
+                    <div id="verif-desc" class="col-md-8">
+                        <label for="inputDesc4" class="form-label">Description</label><br/>
+                        <textarea id="border_desc" v-model="description" class="form-control"/>
+                        <div id="error_desc" style="display:none; color:#dc3545;">
+                            Team description must be at least 20 characters
+                        </div>
                     </div>
-
-                    <input type="submit" value="Envoyer" @click="addTeam"/>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit" @click="addTeam">Envoyer</button>
+                    </div>
                 </form>
-            </section>`
+                </section>`
 }
