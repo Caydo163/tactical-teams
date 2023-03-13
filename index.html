@@ -36,8 +36,8 @@
     </div>
     <script src="./src/misc/constant.js"></script>
     <script src="./src/service/link-service.js"></script>
-    <script src="./src/service/news-service.js"></script>
     <script src="./src/service/api-service.js"></script>
+    <script src="./src/service/news-service.js"></script>
     <script type="module">
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 
@@ -53,10 +53,7 @@
                     linksNavBar : LinkService.getNavLinks(),
                     title: TITLE,
                     allTeams: [],
-                    allNews: [
-                        {'title':'Titre', 'publishedAt':'2019-11-09T04:56:12Z', "link":"https://www.presse-citron.net/jo-esport-la-liste-decevante-des-jeux-video-selectionnes/"},
-                        {'title':'Titre2', 'publishedAt':'2023-03-02T19:00:22Z', "link":"https://www.presse-citron.net/jo-esport-la-liste-decevante-des-jeux-video-selectionnes/"}
-                    ]
+                    allNews: this.importDataApi()
                 }
             },
             created() {
@@ -64,8 +61,24 @@
             },
 
             methods:{
-                addTeam: function(Team){
-                    this.allTeams.push(Team);
+                addTeam: function(team) {
+                    this.allTeams.push(team);
+                },
+
+                importDataApi: async function() {
+                    let data = await NewsService.getNews();
+                    console.log('index -> ',typeof(Array.from(data)));
+                    let tab = [];
+                    Array.from(data).forEach(element => {
+                        // console.log(element);
+                        tab.push({
+                            "title" : element['title'],
+                            "publishedAt" : element['publishedAt'],
+                            "link" : element['url']
+                        });
+                    });
+                    console.log(typeof(tab));
+                    return tab;
                 }
             }
         })

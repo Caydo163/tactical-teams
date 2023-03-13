@@ -1,37 +1,10 @@
-class NewsService {
+class NewsService extends ApiService {
     static getNews() {
-        // let request = new XMLHttpRequest();
-        // request.open('GET', 'https://newsapi.org/v2/everything?qInTitle=esport');
-        // request.requestType = 'json';
-        // request.setRequestHeader('Authorization', API_KEY);
-        // // request.setRequestHeader('Access-Control-Allow-Headers', 'Accept');
-        // request.send();
-        // let result;
-        // request.onload = function() {
-        //     // console.log('rep'+request.response);
-        //      // console.log('news -> '+JSON.parse(request.response));
-        //     result = JSON.parse(request.response);
-        //     console.log('a'+result);
-        // }
-        // console.log('b'+result);
-        // return result;  
-
-        return new Promise((resolve, reject) => {
-            let request = new XMLHttpRequest();
-            request.open('GET', 'https://newsapi.org/v2/everything?qInTitle=esport');
-            request.requestType = 'json';
-            request.setRequestHeader('Authorization', API_KEY);
-            request.onload = function() {
-                if (request.status === 200) {
-                    resolve(JSON.parse(request.response));
-                } else {
-                    reject(new Error('Erreur lors de la récupération des nouvelles'));
-                }
-            }
-            request.onerror = function() {
-                reject(new Error('Erreur lors de la récupération des nouvelles'));
-            }
-            request.send();
+        const url = 'https://newsapi.org/v2/everything?qInTitle=esport';
+        const api_key = 'a7678bb6461e404b8bbe95f7e7c8cd2b';
+        return super.executeGetRequest(url, api_key).then((result) => {
+            console.log('getNews = ',result.articles);
+            return result.articles;
         });
     }
 }
