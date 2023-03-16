@@ -17,7 +17,7 @@ export default {
     },
 
     template: `
-        <div class="card rounded-4 m-4" style="width: 15rem;">
+        <div class="card rounded-4 m-4 card_news">
             <div class="card-body p-3">
                 <h5 class="card-title">{{ title }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted"><i>{{ dateConverter(date) }}</i></h6>
