@@ -24,12 +24,21 @@ nav li {
     max-width: 1000px;
 }
 
-.container_card {
+
+#container_teams,
+#container_news {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-flow: column wrap;
     padding: 20px;
+}
+
+#container_news {
+    flex-flow: column wrap;
+}
+
+#container_teams {
+    flex-flow: row wrap;
 }
 
 h1 {
