@@ -16,3 +16,4 @@ const EQUIPES_JSON = `
 const LINK_HOME = '1';
 const LINK_TEAMS = '2';
 const LINK_RESULTS = '3';
+

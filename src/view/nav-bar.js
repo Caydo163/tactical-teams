@@ -26,8 +26,8 @@ export default {
             </a>
             
             <div class="collapse navbar-collapse">
-                <ul class="navbar-nav" v-for="link in links">
-                    <li class="nav-item">
+                <ul class="navbar-nav" >
+                    <li class="nav-item" v-for="link in links">
                         <a class="nav-link" aria-current="page" @click="changePage">{{ link }}</a>
                     </li>
                 </ul>
