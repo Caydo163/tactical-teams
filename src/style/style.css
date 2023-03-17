@@ -39,6 +39,7 @@ nav li {
 
 #container_teams {
     flex-flow: row wrap;
+    justify-content: flex-start;
 }
 
 h1 {
@@ -63,3 +64,19 @@ nav, h1 {
     justify-content: center;
     margin-bottom: 0;
 }
+
+.titre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;
+}
+
+#listEquipes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+

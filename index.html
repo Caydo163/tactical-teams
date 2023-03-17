@@ -20,23 +20,28 @@
             </section>     
         </div>
 
-        <div id="teams" class="onglet ">
+        <div id="teams" class="onglet show">
             <h1>Teams</h1>
-            <team-form @add-Team="addTeam"></team-form>
-            
-            <section id="container_teams">
-                <team-card v-for="team in allTeams"
-                    :id="team.id"
-                    :name="team.name"
-                    :description="team.description">
-                </team-card>
-            </section>
-
-            <export-button></export-button>
-
+            <div class="row">
+                <team-form class="col" @add-Team="addTeam"></team-form>
+                
+                <section class="col" id="listEquipes">
+                    <div class="titre w-75">
+                        <h3>Equipes</h3>
+                        <export-button></export-button>
+                    </div>
+                    <div id="container_teams">
+                        <team-card v-for="team in allTeams"
+                        :id="team.id"
+                        :name="team.name"
+                        :description="team.description">
+                        </team-card>
+                    </div>
+                </section>
+            </div>
         </div>
 
-        <div id="results" class="onglet show">
+        <div id="results" class="onglet ">
             <h1>Results</h1>
 
             <result-form :all-teams="allTeams"></result-form>
@@ -65,8 +70,8 @@
             data() {
                 return {
                     linksNavBar : LinkService.getNavLinks(),
-                    title: TITLE,
-                    allTeams: [],
+                    title: SITE_TITLE,
+                    allTeams: TEAMS,
                     allNews: this.importDataApi()
                 }
             },
