@@ -4,9 +4,9 @@ export default {
     },
     data: function() {
         return {
-            id: this.team?.id,
-            name: this.team?.name,
-            description: this.team?.description,
+            id:'',
+            name:'',
+            description:'',
             erreurId:'',
             erreurNom:'',
             erreurDesc:'',
@@ -22,7 +22,7 @@ export default {
             const borderName = document.getElementById("border_name");
             const borderDesc = document.getElementById("border_desc");
 
-            if(!this.id || !this.name || this.description.length<20){
+            if(!this.id || this.name.length<5 || this.description.length<20){
                 if (!this.id) {
                     errorId.style.display = "flex";
                     borderId.classList.add("error-form");
@@ -31,7 +31,7 @@ export default {
                     errorId.style.display = "none";
                     borderId.classList.remove("error-form");
                 }
-                if (!this.name) {
+                if (this.name.length<5) {
                     errorName.style.display = "flex";
                     borderName.classList.add("error-form");
                 }
@@ -98,7 +98,7 @@ export default {
                         <label for="inputName4" class="form-label">Nom</label><br/>
                         <input id="border_name" type="text" v-model="name" class="form-control"/>
                         <div id="error_name" style="display:none; color:#dc3545;">
-                            Team name is required
+                            Team name must be at least 5 characters
                         </div>
 
                     </div>
