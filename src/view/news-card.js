@@ -29,7 +29,7 @@ export default {
                         <p class="card-text source">{{site}} - {{author}}</p>
                     </div>
                     <div class="col d-md-flex justify-content-md-end">
-                        <a type="button" class="btn btn-outline-primary text-right" :href="link" target="_blank">Voir l'article</a>
+                        <a type="button" class="btn btn-outline-danger text-right" :href="link" target="_blank">Voir l'article</a>
                     </div>
                 </div>
             </div>  

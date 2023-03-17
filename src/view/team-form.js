@@ -106,7 +106,7 @@ export default {
                         </div>
                     </div>
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit" @click="addTeam">Envoyer</button>
+                        <button class="btn btn-danger" type="submit" @click="addTeam">Envoyer</button>
                     </div>
                 </form>
                 </section>`

@@ -35,5 +35,5 @@ export default {
         }
     },
 
-    template: `<button class="btn btn-outline-primary" id="export_button" @click="exportTeams">Exporter</button>`
+    template: `<button class="btn btn-outline-danger" id="export_button" @click="exportTeams">Exporter</button>`
 }
