@@ -24,9 +24,12 @@ export default {
                 <img src="#" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 Tactical Teams
             </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav" >
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item" v-for="link in links">
                         <a class="nav-link" aria-current="page" @click="changePage">{{ link }}</a>
                     </li>

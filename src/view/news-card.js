@@ -2,7 +2,9 @@ export default {
     props: {
         title : String,
         date : String,
-        link : String
+        link : String,
+        author : String,
+        site : String,
     },
 
     methods : {
@@ -21,10 +23,20 @@ export default {
             <div class="card-body p-3">
                 <h5 class="card-title">{{ title }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted"><i>{{ dateConverter(date) }}</i></h6>
-                <div class="d-md-flex justify-content-md-end">
-                    <a type="button" class="btn btn-outline-primary text-right" :href="link" target="_blank">Voir l'article</a>
+
+                <div class="row justify-content-between">
+                    <div class="col d-md-flex justify-content-md-start">
+                        <p class="card-text source">{{site}} - {{author}}</p>
+                    </div>
+                    <div class="col d-md-flex justify-content-md-end">
+                        <a type="button" class="btn btn-outline-primary text-right" :href="link" target="_blank">Voir l'article</a>
+                    </div>
                 </div>
             </div>  
         </div>
     `
 }
+
+// <div class="d-md-flex justify-content-md-end">
+// <a type="button" class="btn btn-outline-primary text-right" :href="link" target="_blank">Voir l'article</a>
+// </div>
