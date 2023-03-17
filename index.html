@@ -38,6 +38,8 @@
 
         <div id="results" class="onglet">
             <h1>Results</h1>
+
+            <result-form :all-teams="allTeams"></result-form>
         </div>
 
 
@@ -47,12 +49,14 @@
     <script src="./src/service/link-service.js"></script>
     <script src="./src/service/api-service.js"></script>
     <script src="./src/service/news-service.js"></script>
+    <script src="./src/service/result-service.js"></script>
     <script type="module">
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 
         import NavBar from './src/view/nav-bar.js';
         import TeamCard from './src/view/team-card.js';
         import NewsCard from './src/view/news-card.js';
+        import ResultForm from './src/view/result-form.js';
         import TeamForm from './src/view/team-form.js';
         import ExportButton from './src/view/export-button.js';
 
@@ -84,6 +88,7 @@
         app.component('NavBar', NavBar)
            .component('TeamForm', TeamForm)
            .component('NewsCard', NewsCard)
+           .component('ResultForm', ResultForm)
            .component('TeamCard', TeamCard)
            .component('ExportButton', ExportButton);
         

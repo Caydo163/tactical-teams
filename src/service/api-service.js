@@ -8,14 +8,14 @@ class ApiService {
         return fetch(url, headers).then(response => {
             console.log('response -> ', response);
             if(!response.ok) {
-                throw new Error('Erreur sur l\'appel HTTP pour l\'API');
+                throw new Error('Erreur sur l\'appel HTTP pour l\'API à l\'url : ', url);
             }
             return response.json();
         }).then((json) => {
             console.log('json -> ',json);
             return json;
         }).catch((error) => {
-            console.error('Error : ',error);
+            console.error('Erreur sur l\'appel HTTP pour l\'API à l\'url : ',url,' => ',error);
         });
     }
 }
