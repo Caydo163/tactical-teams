@@ -1,6 +1,6 @@
 # Tactical Teams
 
-Projet JavaScritp et VueJS de deuxième années de BUT Informatique.
+Projet JavaScript et VueJS de deuxième années de BUT Informatique.
 
 ## Modification apporté au sujet
 - News :
@@ -13,3 +13,8 @@ Projet JavaScritp et VueJS de deuxième années de BUT Informatique.
 ## Question 13
 
 Puisque nous n'avons pas créé de projet Vue.js mais simplement importer Vue.js dans notre fichier `index.html`, nous ne pouvons pas faire la question 13.
+
+## Equipe
+
+- [CARVALHEIRO Justin](https://codefirst.iut.uca.fr/git/justin.carvalheiro)
+- [FORISSIER Evan](https://codefirst.iut.uca.fr/git/evan.forissier)
