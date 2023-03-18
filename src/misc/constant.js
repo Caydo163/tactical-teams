@@ -1,8 +1,5 @@
 const SITE_TITLE = 'Tactical Teams';
-
-const ERROR_COLOR = 'red';
 const ERROR_COLOR_FORM = '#dc3545';
-
 
 const TEAMS = [
     {

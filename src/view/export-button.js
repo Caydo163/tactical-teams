@@ -15,7 +15,7 @@ export default {
                 let json = JSON.stringify(teams);
                 console.log('Export teams => ',json);
 
-                // Création du fichier à télécharger avec son
+                // Création du fichier à télécharger avec son url
                 const blob = new Blob([json], {type: 'application/json'});
                 const url = URL.createObjectURL(blob);
             

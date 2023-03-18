@@ -18,7 +18,7 @@ export default {
                 <h6 class="card-subtitle mb-2 text-muted"><i id="id">{{ id }}</i></h6>
                 <p class="card-text" id="description">{{ showDescription(description) }}</p>
                 <div class="d-md-flex justify-content-md-end">
-                    <button type="button" class="btn btn-outline-primary text-right">Voir plus</button>
+                    <button type="button" class="btn btn-outline-danger text-right">Voir plus</button>
                 </div>
             </div>  
         </div>

@@ -1,15 +1,18 @@
+/* IMPORT *************************************/
 @import url(https://fonts.googleapis.com/css?family=Chakra+Petch:300,300italic,regular,italic,500,500italic,600,600italic,700,700italic);
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
 
 
+/* VARIABLES *************************************/
 :root{
     --error-color : #dc3545;
+    --main-color : #bb2d3b;
 }
 
-footer {
-    font-family: Roboto;
-}
 
+* {
+    font-family: Roboto, arial;
+}
 nav li {
     cursor: pointer;
 }
@@ -17,7 +20,6 @@ nav li {
 .card {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     width: 15rem;
-    font-family: Roboto;
 }
 
 .card_news {
@@ -47,7 +49,8 @@ nav li {
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
+    text-decoration: overline var(--main-color);
 }
 
 nav, h1 {
@@ -56,11 +59,10 @@ nav, h1 {
 }
 
 .active a {
-    color: red;
+    color: var(--main-color);
 }
 
 .source {
-    font-family: Roboto;
     margin-bottom: 0;
 }
 
@@ -95,3 +97,26 @@ div.show {
     border-radius: 7px;
 }
 
+.footer {
+    margin-top: 75px;
+
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+.navbar-brand img:hover {
+    transform: rotate(340deg);
+    transition: .5s;
+}
+
+.navbar-brand img {
+    transition: .5s;
+}
