@@ -23,7 +23,7 @@ export default {
     },
     
     template: `
-        <form @submit.prevent class="form m-5">
+        <form @submit.prevent class="form m-5 w-50">
             <div class="row">
                 <div class="col">
                     <label for="teamA" class="form-label">Team A</label><br/>

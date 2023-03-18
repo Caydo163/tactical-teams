@@ -20,13 +20,13 @@
             </section>     
         </div>
 
-        <div id="teams" class="onglet show">
+        <div id="teams" class="onglet show" style="width: 99%;">
             <h1>Teams</h1>
-            <div class="row">
-                <team-form class="col" @add-Team="addTeam"></team-form>
+            <div class="row mt-5">
+                <team-form class="col-5" @add-Team="addTeam"></team-form>
                 
-                <section class="col" id="listEquipes">
-                    <div class="titre w-75">
+                <section class="col-6" id="listEquipes">
+                    <div class="titre w-100 pl-4 pr-4">
                         <h3>Equipes</h3>
                         <export-button></export-button>
                     </div>

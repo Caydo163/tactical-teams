@@ -76,12 +76,12 @@ export default {
      * @click => permet de définir un callback lorsque l'événement clique est déclenché
      */
     template: `<section>
-                <form @submit.prevent class="row g-3 justify-content-center">
-                    <div class="row justify-content-center">
-                        <h3 class="col-8 justify-content-center">Ajouter une équipe</h3>
+                <form @submit.prevent class="row justify-content-center">
+                    <div class="row justify-content-center py-4">
+                        <h3 class="col-8 p-0">Ajouter une équipe</h3>
                     </div>
 
-                    <div id="verif-id" class="col-md-2">
+                    <div id="verif-id" class="col-md-3">
                         <label for="inputId4" class="form-label">Id</label><br/>
                         <input id="border_id" type="text" v-model="id" class="form-control"/>
                         <div id="error_id" style="display:none; color:#dc3545;">
@@ -89,7 +89,7 @@ export default {
                         </div>
                     </div>
 
-                    <div id="verif-nom" class="col-md-6">
+                    <div id="verif-nom" class="col-md-5">
                         <label for="inputName4" class="form-label">Nom</label><br/>
                         <input id="border_name" type="text" v-model="name" class="form-control"/>
                         <div id="error_name" style="display:none; color:#dc3545;">

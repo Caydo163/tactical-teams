@@ -19,6 +19,16 @@ const TEAMS = [
         id : "3625",
         name : "Mandatory",
         description : "Mandatory (acronyme MDR) est un site français depuis 2020 et une structure de jeu vidéo de compétition depuis 2022. La marque Mandatory a été créée par Z Agency1, entreprise fondée par le streamer français Adrien « ZeratoR » Nougaret2 et ZQSD Productions."
+    },
+    {
+        id : "4569",
+        name : "Solary",
+        description : "Solary est une société indépendante de production de divertissement via ses Web TV, et un club d'esport français fondé en 2017, par d'anciens joueurs et régisseurs d'Eclypsia, et dont le siège social est situé à Tours."
+    },
+    {
+        id : "2783",
+        name : "PSG Esports",
+        description : "La section esport du Paris Saint-Germain ou PSG Esports est un club d'esport français fondé en octobre 2016 et basé à Paris. La structure est dirigée jusqu'en octobre 2017 par Yellowstar, ancien joueur professionnel de League of Legends, en tant que Head of eSports, puis actuellement par Yassine Jaada en tant que Chief Gaming Officer."
     }
 ];
 
