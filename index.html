@@ -15,14 +15,14 @@
     <div id="app">
         <nav-bar :links="linksNavBar"></nav-bar>
 
-        <div id="home" class="onglet show">
+        <div id="home" class="onglet ">
             <h1>Home</h1>    
             <section id="container_news">
                 <news-card v-for="news in allNews" :title="news.title"  :date="news.publishedAt" :link="news.url" :author="news.author" :site="news.source.name"></news-card>
             </section>     
         </div>
 
-        <div id="teams" class="onglet " style="width: 99%;">
+        <div id="teams" class="onglet show" style="width: 99%;">
             <h1>Teams</h1>
             <div class="row mt-5">
                 <team-form class="col-5" @add-Team="addTeam"></team-form>
@@ -33,7 +33,7 @@
                         <export-button></export-button>
                     </div>
                     <div id="container_teams">
-                        <team-card v-for="team in allTeams"
+                        <team-card v-for="team in allTeams" 
                         :id="team.id"
                         :name="team.name"
                         :description="team.description">
