@@ -120,3 +120,19 @@ div.show {
 .navbar-brand img {
     transition: .5s;
 }
+
+textarea {
+    max-height: 500px;
+    height: 180px;
+}
+
+.error_msg {
+    display: none;
+    color: var(--error-color);
+}
+
+#icon_delete {
+    color: var(--main-color);
+    font-size: 25px;
+    cursor: pointer;
+}

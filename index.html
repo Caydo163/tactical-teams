@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- BootStrap -->
+    <!-- BootStrap (Js + CSS + Icon) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="./src/style/style.css" />
 </head>
@@ -15,17 +16,17 @@
     <div id="app">
         <nav-bar :links="linksNavBar"></nav-bar>
 
-        <div id="home" class="onglet show">
+        <div id="home" class="onglet ">
             <h1>Home</h1>    
             <section id="container_news">
                 <news-card v-for="news in allNews" :title="news.title"  :date="news.publishedAt" :link="news.url" :author="news.author" :site="news.source.name"></news-card>
             </section>     
         </div>
 
-        <div id="teams" class="onglet " style="width: 99%;">
+        <div id="teams" class="onglet show" style="width: 99%;">
             <h1>Teams</h1>
             <div class="row mt-5">
-                <team-form class="col-5" @add-Team="addTeam"></team-form>
+                <team-form class="col-5" @add-Team="addTeam" @reset-current-team="resetCurrentTeam" v-if="rerenderComponent" :current_team="current_team"></team-form>
                 
                 <section class="col-6" id="listEquipes">
                     <div class="titre w-100 pl-4 pr-4">
@@ -33,7 +34,7 @@
                         <export-button></export-button>
                     </div>
                     <div id="container_teams">
-                        <team-card v-for="team in allTeams"
+                        <team-card v-for="team in allTeams"  @edit-Card="editCard"
                         :id="team.id"
                         :name="team.name"
                         :description="team.description">
@@ -76,6 +77,8 @@
                     title: SITE_TITLE,
                     allTeams: TEAMS,
                     allNews: this.importDataApi(),
+                    current_team: null,
+                    rerenderComponent: true,                                
                 }
             },
             created() {
@@ -88,15 +91,20 @@
                 },
 
                 importDataApi: async function() {
-                    try {
-                        this.allNews = await NewsService.getNews();
-                    } catch(e) {
-                        console.error('Echec lors de la récupération des news via l\'API');
-                        this.allNews = [];
-                        let p = document.createElement('p');
-                        p.textContent = 'Echec lors de la récupération des news';
-                        document.querySelector('#container_news').appendChild(p);
-                    }
+                    this.allNews = await NewsService.getNews();
+                },
+                editCard : function(current_team){
+                    this.current_team=current_team;
+                    console.log("editIndex");
+                    this.rerenderComponent = false;
+                    this.$nextTick(() => {
+                    this.rerenderComponent = true;
+                    });
+                    console.log(this.current_team);
+                },
+                resetCurrentTeam: function(){
+                    console.log("reset");
+                    this.current_team=null;
                 }
             }
         })

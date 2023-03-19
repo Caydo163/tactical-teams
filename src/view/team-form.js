@@ -1,9 +1,20 @@
 export default {
+    props:{
+        current_team: Object,
+    },
+    mounted() {
+        if (this.current_team) {
+            this.id = this.current_team.id ;
+            this.name = this.current_team.name;
+            this.description = this.current_team.description;
+        }
+    },
+
     data: function() {
         return {
-            id: '',
-            name: '',
-            description: '',
+            id:'',
+            name:'',
+            description:'',
             erreurId:'',
             erreurNom:'',
             erreurDesc:'',
@@ -12,15 +23,15 @@ export default {
     },
     methods: {
         addTeam: function() {
-            const errorId = document.getElementById("error_id");
-            const errorName = document.getElementById("error_name");
-            const errorDesc = document.getElementById("error_desc");
-            const borderId = document.getElementById("border_id");
-            const borderName = document.getElementById("border_name");
-            const borderDesc = document.getElementById("border_desc");
+            const errorId = document.querySelector('#error_id');
+            const errorName = document.querySelector('#error_name');
+            const errorDesc = document.querySelector('#error_desc');
+            const borderId = document.querySelector('#id');
+            const borderName = document.querySelector('#name');
+            const borderDesc = document.querySelector('#desc');
 
-            if(!this.id || !this.name || this.description.length<20){
-                if (!this.id) {
+            if(!this.id || isNaN(this.id) || this.name.length<5 || this.description.length<20){
+                if (!this.id || isNaN(this.id)) {
                     errorId.style.display = "flex";
                     borderId.classList.add("error-form");
                 }
@@ -28,7 +39,7 @@ export default {
                     errorId.style.display = "none";
                     borderId.classList.remove("error-form");
                 }
-                if (!this.name) {
+                if (!this.name.length<5) {
                     errorName.style.display = "flex";
                     borderName.classList.add("error-form");
                 }
@@ -49,12 +60,33 @@ export default {
             }
             this.formSubmitted = true
             const Team = { id: this.id, name: this.name, description: this.description };
-            console.log('form.addTeam', Team);
+            if(!this.current_team){
+                console.log('addTeam', Team);
+                this.$emit('addTeam', Team);
 
+            }
+            else{
+                console.log("else");
+                const editForm=document.querySelector('#toedit');
+                editForm.querySelector('#id').textContent=this.id;
+                editForm.querySelector('#name').textContent=this.name;
+                editForm.querySelector('#description').textContent=(this.description.length > 20) ? this.description.substr(0,20) + ' ...' : this.description;
+            }
             //permet de faire remonter un event au composant parent
             //l'event sera écouté à l'appel du composant enfant via @change-state="function"
-            this.$emit('addTeam', Team);
 
+            this.clearForm();
+            
+        },
+
+        clearForm: function() {
+            const errorId = document.querySelector('#error_id');
+            const errorName = document.querySelector('#error_name');
+            const errorDesc = document.querySelector('#error_desc');
+            const borderId = document.querySelector('#id');
+            const borderName = document.querySelector('#name');
+            const borderDesc = document.querySelector('#desc');
+            
             this.id = '';
             this.name ='';
             this.description = '';
@@ -64,7 +96,10 @@ export default {
             borderId.classList.remove("error-form");
             borderName.classList.remove("error-form");
             borderDesc.classList.remove("error-form");
-            
+            this.$emit('resetCurrentTeam');
+            if(document.querySelector('#toedit')){
+                document.querySelector('#toedit').removeAttribute('id');
+            }
         }
         
     },
@@ -82,31 +117,32 @@ export default {
                     </div>
 
                     <div id="verif-id" class="col-md-3">
-                        <label for="inputId4" class="form-label">Id</label><br/>
-                        <input id="border_id" type="text" v-model="id" class="form-control"/>
-                        <div id="error_id" style="display:none; color:#dc3545;">
-                            Team Id is required
+                        <label for="id" class="form-label">Id</label><br/>
+                        <input id="id" type="text" v-model="id" class="form-control"/>
+                        <div class="error_msg" id="error_id">
+                            L'identifiant est obligatoire et doit être un entier
                         </div>
                     </div>
 
                     <div id="verif-nom" class="col-md-5">
-                        <label for="inputName4" class="form-label">Nom</label><br/>
-                        <input id="border_name" type="text" v-model="name" class="form-control"/>
-                        <div id="error_name" style="display:none; color:#dc3545;">
-                            Team name is required
+                        <label for="name" class="form-label">Nom</label><br/>
+                        <input id="name" type="text" v-model="name" class="form-control"/>
+                        <div class="error_msg" id="error_name">
+                            Le nom est obligatoire et doit faire au moins 5 caractère
                         </div>
 
                     </div>
 
                     <div id="verif-desc" class="col-md-8">
-                        <label for="inputDesc4" class="form-label">Description</label><br/>
-                        <textarea id="border_desc" v-model="description" class="form-control"/>
-                        <div id="error_desc" style="display:none; color:#dc3545;">
-                            Team description must be at least 20 characters
+                        <label for="desc" class="form-label">Description</label><br/>
+                        <textarea id="desc" v-model="description" class="form-control"/>
+                        <div class="error_msg" id="error_desc">
+                            La description est obligatoire et doit faire au moins 20 caractère
                         </div>
                     </div>
                     <div class="row justify-content-center mt-4">
-                        <button class="col-8 btn btn-danger" type="submit" @click="addTeam">Envoyer</button>
+                        <a class="col-1 align-items-center justify-content-center"><i class="bi bi-trash3" id="icon_delete" @click="clearForm"></i></a>
+                        <button class="col-7 btn btn-danger" type="submit" @click="addTeam">Envoyer</button>
                     </div>
                 </form>
                 </section>`

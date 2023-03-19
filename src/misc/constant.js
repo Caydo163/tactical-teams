@@ -21,11 +21,6 @@ const TEAMS = [
         id : "4569",
         name : "Solary",
         description : "Solary est une société indépendante de production de divertissement via ses Web TV, et un club d'esport français fondé en 2017, par d'anciens joueurs et régisseurs d'Eclypsia, et dont le siège social est situé à Tours."
-    },
-    {
-        id : "2783",
-        name : "PSG Esports",
-        description : "La section esport du Paris Saint-Germain ou PSG Esports est un club d'esport français fondé en octobre 2016 et basé à Paris. La structure est dirigée jusqu'en octobre 2017 par Yellowstar, ancien joueur professionnel de League of Legends, en tant que Head of eSports, puis actuellement par Yassine Jaada en tant que Chief Gaming Officer."
     }
 ];
 
