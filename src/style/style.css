@@ -130,3 +130,9 @@ textarea {
     display: none;
     color: var(--error-color);
 }
+
+#icon_delete {
+    color: var(--main-color);
+    font-size: 25px;
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 # Tactical Teams
 
-Projet JavaScript et VueJS de deuxième années de BUT Informatique.
+Projet JavaScript et VueJS de deuxième année de BUT Informatique.
 
 ## Modification apporté au sujet
 - News :
@@ -14,6 +14,7 @@ Projet JavaScript et VueJS de deuxième années de BUT Informatique.
 - Teams : 
   - Téléchargement d'un fichier `json` lors de l'exportation des teams
   - L'identifiant d'une team doit être un numérique
+  - Bouton permettant de supprimer les données entré dans le formulaire sans l'envoyer
 
 
 ## Question 13

@@ -55,6 +55,18 @@ export default {
             //l'event sera écouté à l'appel du composant enfant via @change-state="function"
             this.$emit('addTeam', Team);
 
+            this.clearForm();
+            
+        },
+
+        clearForm: function() {
+            const errorId = document.querySelector('#error_id');
+            const errorName = document.querySelector('#error_name');
+            const errorDesc = document.querySelector('#error_desc');
+            const borderId = document.querySelector('#id');
+            const borderName = document.querySelector('#name');
+            const borderDesc = document.querySelector('#desc');
+            
             this.id = '';
             this.name ='';
             this.description = '';
@@ -64,7 +76,6 @@ export default {
             borderId.classList.remove("error-form");
             borderName.classList.remove("error-form");
             borderDesc.classList.remove("error-form");
-            
         }
         
     },
@@ -107,7 +118,8 @@ export default {
                     </div>
                     <input type="hidden" id="add_or_edit" value="add"/>
                     <div class="row justify-content-center mt-4">
-                        <button class="col-8 btn btn-danger" type="submit" @click="addTeam">Envoyer</button>
+                        <a class="col-1 align-items-center justify-content-center"><i class="bi bi-trash3" id="icon_delete" @click="clearForm"></i></a>
+                        <button class="col-7 btn btn-danger" type="submit" @click="addTeam">Envoyer</button>
                     </div>
                 </form>
                 </section>`
