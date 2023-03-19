@@ -14,8 +14,6 @@ class ApiService {
         }).then((json) => {
             console.log('json -> ',json);
             return json;
-        }).catch((error) => {
-            console.error('Erreur sur l\'appel HTTP pour l\'API à l\'url : ',url,' => ',error);
         });
     }
 }

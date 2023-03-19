@@ -15,8 +15,14 @@ export default {
         appelApi: async function() {
             if(this.teamA !== '' && this.teamB !== '') {
                 console.log(`${this.teamA} (${this.scoreA}) - ${this.teamB} (${this.scoreB})`);
-                let request = await ResultService.postResult();
-                console.log(request);
+                try {
+                    let request = await ResultService.postResult();
+                } catch(e) {
+                    console.error('Erreur lors de l\'appel à l\'API');
+                    let p = document.createElement('p');
+                    p.textContent = 'Echec lors l\'appel à l\'API';
+                    document.querySelector('#results').appendChild(p);
+                }
             } 
         }
         

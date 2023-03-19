@@ -75,7 +75,7 @@
                     linksNavBar : LinkService.getNavLinks(),
                     title: SITE_TITLE,
                     allTeams: TEAMS,
-                    allNews: this.importDataApi()
+                    allNews: this.importDataApi(),
                 }
             },
             created() {
@@ -88,7 +88,15 @@
                 },
 
                 importDataApi: async function() {
-                    this.allNews = await NewsService.getNews();
+                    try {
+                        this.allNews = await NewsService.getNews();
+                    } catch(e) {
+                        console.error('Echec lors de la récupération des news via l\'API');
+                        this.allNews = [];
+                        let p = document.createElement('p');
+                        p.textContent = 'Echec lors de la récupération des news';
+                        document.querySelector('#container_news').appendChild(p);
+                    }
                 }
             }
         })
