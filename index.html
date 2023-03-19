@@ -26,7 +26,7 @@
         <div id="teams" class="onglet show" style="width: 99%;">
             <h1>Teams</h1>
             <div class="row mt-5">
-                <team-form class="col-5" @add-Team="addTeam"></team-form>
+                <team-form class="col-5" @add-Team="addTeam" @reset-current-team="resetCurrentTeam" v-if="rerenderComponent" :current_team="current_team"></team-form>
                 
                 <section class="col-6" id="listEquipes">
                     <div class="titre w-100 pl-4 pr-4">
@@ -34,7 +34,7 @@
                         <export-button></export-button>
                     </div>
                     <div id="container_teams">
-                        <team-card v-for="team in allTeams" 
+                        <team-card v-for="team in allTeams"  @edit-Card="editCard"
                         :id="team.id"
                         :name="team.name"
                         :description="team.description">
@@ -76,7 +76,9 @@
                     linksNavBar : LinkService.getNavLinks(),
                     title: SITE_TITLE,
                     allTeams: TEAMS,
-                    allNews: this.importDataApi()
+                    allNews: this.importDataApi(),
+                    current_team: null,
+                    rerenderComponent: true,                                
                 }
             },
             created() {
@@ -90,6 +92,19 @@
 
                 importDataApi: async function() {
                     this.allNews = await NewsService.getNews();
+                },
+                editCard : function(current_team){
+                    this.current_team=current_team;
+                    console.log("editIndex");
+                    this.rerenderComponent = false;
+                    this.$nextTick(() => {
+                    this.rerenderComponent = true;
+                    });
+                    console.log(this.current_team);
+                },
+                resetCurrentTeam: function(){
+                    console.log("reset");
+                    this.current_team=null;
                 }
             }
         })

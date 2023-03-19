@@ -1,9 +1,20 @@
 export default {
+    props:{
+        current_team: Object,
+    },
+    mounted() {
+        if (this.current_team) {
+            this.id = this.current_team.id ;
+            this.name = this.current_team.name;
+            this.description = this.current_team.description;
+        }
+    },
+
     data: function() {
         return {
-            id: '',
-            name: '',
-            description: '',
+            id:'',
+            name:'',
+            description:'',
             erreurId:'',
             erreurNom:'',
             erreurDesc:'',
@@ -49,11 +60,20 @@ export default {
             }
             this.formSubmitted = true
             const Team = { id: this.id, name: this.name, description: this.description };
-            console.log('form.addTeam', Team);
+            if(!this.current_team){
+                console.log('addTeam', Team);
+                this.$emit('addTeam', Team);
 
+            }
+            else{
+                console.log("else");
+                const editForm=document.querySelector('#toedit');
+                editForm.querySelector('#id').textContent=this.id;
+                editForm.querySelector('#name').textContent=this.name;
+                editForm.querySelector('#description').textContent=(this.description.length > 20) ? this.description.substr(0,20) + ' ...' : this.description;
+            }
             //permet de faire remonter un event au composant parent
             //l'event sera écouté à l'appel du composant enfant via @change-state="function"
-            this.$emit('addTeam', Team);
 
             this.clearForm();
             
@@ -76,6 +96,10 @@ export default {
             borderId.classList.remove("error-form");
             borderName.classList.remove("error-form");
             borderDesc.classList.remove("error-form");
+            this.$emit('resetCurrentTeam');
+            if(document.querySelector('#toedit')){
+                document.querySelector('#toedit').removeAttribute('id');
+            }
         }
         
     },
@@ -116,7 +140,6 @@ export default {
                             La description est obligatoire et doit faire au moins 20 caractère
                         </div>
                     </div>
-                    <input type="hidden" id="add_or_edit" value="add"/>
                     <div class="row justify-content-center mt-4">
                         <a class="col-1 align-items-center justify-content-center"><i class="bi bi-trash3" id="icon_delete" @click="clearForm"></i></a>
                         <button class="col-7 btn btn-danger" type="submit" @click="addTeam">Envoyer</button>
